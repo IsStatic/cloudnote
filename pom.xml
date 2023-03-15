@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.lmx</groupId>
+    <artifactId>cloudnote</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>cloudnote</name>
+    <description>cloudnote</description>
+    <packaging>pom</packaging>
+    <properties>
+        <java.version>8</java.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
+<!--            <spring-cloud.version>2022.0.0-RC2</spring-cloud.version>-->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <log4j.version>1.2.17</log4j.version>
+        <zookeeper.version>3.4.10</zookeeper.version>
+        <zookeeper-discovery.version>3.1.3</zookeeper-discovery.version>
+        <!--    <validation.version>3.0.0</validation.version>-->
+        <mysql.version>8.0.29</mysql.version>
+<!--        <test.version>3.0.0</test.version>-->
+        <mybatis.version>3.0.0-SNAPSHOT</mybatis.version>
+        <lang3.version>3.6</lang3.version>
+        <mybatis-puls.version>3.5.2.7-SNAPSHOT</mybatis-puls.version>
+        <!--    <thymeleaf.version>2.6.4</thymeleaf.version>-->
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <!--        <dependency>-->
+            <!--          <groupId>org.springframework.boot</groupId>-->
+            <!--          <artifactId>spring-boot-starter</artifactId>-->
+            <!--          <version>2.6.4</version>-->
+            <!--        </dependency>-->
+            <!--javaWEB依赖-->
+            <!--        <dependency>-->
+            <!--          <groupId>org.springframework.boot</groupId>-->
+            <!--          <artifactId>spring-boot-starter-web</artifactId>-->
+            <!--          <version>2.7.6</version>-->
+            <!--        </dependency>-->
+            <!--validation参数校验如@null,@notnull等依赖-->
+            <!--        <dependency>-->
+            <!--          <groupId>org.springframework.boot</groupId>-->
+            <!--          <artifactId>spring-boot-starter-validation</artifactId>-->
+            <!--          <version>${validation.version}</version>-->
+            <!--        </dependency>-->
+            <!--mysql依赖-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <!--        <scope>import</scope>-->
+                <version>${mysql.version}</version>
+            </dependency>
+            <!--lombok依赖-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <optional>true</optional>
+                <version>${lombok.version}</version>
+            </dependency>
+            <!--Spring-test依赖-->
+            <!--        <dependency>-->
+            <!--          <groupId>org.springframework.boot</groupId>-->
+            <!--          <artifactId>spring-boot-starter-test</artifactId>-->
+            <!--          <version>${test.version}</version>-->
+            <!--        </dependency>-->
+            <!--myabatis-plus -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-puls.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <!--        <scope>import</scope>-->
+            <!--对 spring cloud 进行依赖管理-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <!--        <type>pom</type>-->
+            </dependency>
+            <!--zookeeper服务发现依赖-->
+<!--                    <dependency>-->
+<!--                      <groupId>org.springframework.cloud</groupId>-->
+<!--                      <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>-->
+<!--                      <version>${zookeeper-discovery.version}</version>-->
+<!--                    </dependency>-->
+<!--&lt;!&ndash;                    <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                      <artifactId>spring-cloud-zookeeper-dependencies</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </dependency>&ndash;&gt;-->
+<!--                    <dependency>-->
+<!--                      <groupId>org.springframework.cloud</groupId>-->
+<!--                      <artifactId>spring-cloud-starter-openfeign</artifactId>-->
+<!--                      <version>4.0.0-RC2</version>-->
+<!--                    </dependency>-->
+            <!--加强版java.lang-->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.lmx</groupId>
+                <artifactId>hdfsModel</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lmx</groupId>
+                <artifactId>common</artifactId>
+                <version>0.0.1-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

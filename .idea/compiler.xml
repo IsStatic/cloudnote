@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="note" />
+        <module name="api" />
+        <module name="common" />
+        <module name="hdfsModel" />
+        <module name="test" />
+        <module name="user" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hdfsModel (1)" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api" options="-parameters" />
+      <module name="cloudnote" options="-parameters" />
+      <module name="common" options="-parameters" />
+      <module name="hdfsModel" options="-parameters" />
+      <module name="hdfsModel (1)" options="-parameters" />
+      <module name="note" options="-parameters" />
+      <module name="test" options="-parameters" />
+      <module name="user" options="-parameters" />
+    </option>
+  </component>
+</project>

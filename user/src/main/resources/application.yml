@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: USER
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mynote?useUnicode=true&characterEncoding=UTF-8&servserTimezone=Asia/Shanghai
+    username: root
+    password: Ling
+    hikari:
+      #????
+      pool-name: DateHikariCP
+      #???????
+      minimum-idle: 5
+      #?????????? ??600000
+      idle-timeout: 1800000
+      #?????
+      maximum-pool-size: 10
+      #?????????????
+      auto-commit: true
+      #???????? 0?????????1800000
+      max-lifetime: 1800000
+      #?????? ??30000
+      connection-timeout: 30000
+      #?????????????
+      connection-test-query: SELECT 1
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: false
+        register: false
+      connect-string: localhost:2181
+server:
+  port: 8001
+logging:
+  level:
+    com.lmx.user.*: debug
+  file:
+    name: target/app.log
+# mybatis-puls ??
+mybatis-plus:
+  # ??mapper.xml????
+  mapper-locations: classpath*:/mapper/*Mapper.xml
+  # ??mybatis??????????????
+  type-aliases-package: com.lxm.user

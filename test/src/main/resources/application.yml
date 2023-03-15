@@ -1,0 +1,18 @@
+spring:
+  web:
+    resources:
+      add-mappings: true
+      static-locations: classpath:/static/
+  application:
+    name: TEST
+  cloud:
+    zookeeper:
+      discovery:
+        register: false
+      connect-string: localhost:2181
+      enabled: false
+server:
+  port: 8080
+logging:
+  level:
+    com.example.controlerdemo.controller.*: debug

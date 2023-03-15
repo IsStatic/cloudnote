@@ -1,0 +1,18 @@
+server:
+  port: 8000
+spring:
+  web:
+    resources:
+      add-mappings: true
+      static-locations: classpath:/static/
+  application:
+    name: API
+  cloud:
+    zookeeper:
+      discovery:
+        register: false
+      connect-string: localhost:2181
+      enabled: true
+logging:
+  level:
+    com.lmx.api.controller.*: debug
