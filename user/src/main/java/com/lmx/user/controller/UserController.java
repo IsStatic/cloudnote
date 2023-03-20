@@ -1,15 +1,10 @@
 package com.lmx.user.controller;
 
-import com.lmx.common.entitys.RespBean;
+import com.lmx.common.entitys.*;
 import com.lmx.user.service.IUserService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * 
@@ -19,14 +14,46 @@ import javax.servlet.http.HttpServletResponse;
  */
 @RestController
 @RequestMapping("/user")
-@Slf4j
+//@Slf4j
 public class UserController {
 
     @Autowired
     private IUserService userService;
+    @GetMapping("/hello")
+    public String hello(){
+        return "hello";
+    }
 
+
+    /**
+     * 登录
+     *由于Feign辉使用HTTP请求的方式调用，所以必须要接受参数，即添加@RequestBody或@PathVariable等
+     * @param login 登录
+     * @return {@link RespBean}
+     */
     @PostMapping("/login")
-    public RespBean login(String phone, String password, HttpServletRequest request, HttpServletResponse response){
-        return userService.login(phone,password,request,response);
+    public LoginResponse login(@RequestBody LoginEntity login){
+        return userService.login(login);
+    }
+    public UserInfoEntity userInfo(UserInfoRequest userInfoRequest){
+        if (null == userInfoRequest){
+            return null;
+        }
+        return null;
+    }
+
+    @PostMapping("/register")
+    public RespBean register(@RequestBody LoginEntity login){
+        return userService.register(login);
+    }
+
+    @PostMapping("/update")
+    public RespBean update(@RequestBody UpdateEntity update){
+        return userService.update(update);
+    }
+
+    @PostMapping("/updatePass")
+    public RespBean updatePass(@RequestBody PassWordEntity passWord){
+        return userService.updatePassWord(passWord);
     }
 }

@@ -8,11 +8,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="note" />
-        <module name="api" />
         <module name="common" />
-        <module name="hdfsModel" />
         <module name="test" />
+        <module name="api" />
+        <module name="hdfsModel" />
         <module name="user" />
+        <module name="demo" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -24,6 +25,7 @@
       <module name="api" options="-parameters" />
       <module name="cloudnote" options="-parameters" />
       <module name="common" options="-parameters" />
+      <module name="demo" options="-parameters" />
       <module name="hdfsModel" options="-parameters" />
       <module name="hdfsModel (1)" options="-parameters" />
       <module name="note" options="-parameters" />

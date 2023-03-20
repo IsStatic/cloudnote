@@ -1,13 +1,17 @@
 package com.lmx.common.entitys;
 
+import java.io.Serializable;
+
 /**
+ * resp豆
  * 公共返回对象
  *
+ * @author LMX
  * @author: LC
  * @date 2022/3/2 1:50 下午
  * @ClassName: RespBean
  */
-public class RespBean {
+public class RespBean implements Serializable {
 
     private long code;
     private String message;

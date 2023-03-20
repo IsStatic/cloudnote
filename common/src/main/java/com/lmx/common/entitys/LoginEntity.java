@@ -8,11 +8,12 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class LoginEntity {
-    @isPhone
+
     @NotNull
+    @isPhone
     private String mobile;
 
     @NotNull(message = "密码不能为空")
-    @Length(min = 32) //由于前端传来的数据已经进行一次MD5
+//    @Length(min = 32) //由于前端传来的数据已经进行一次MD5
     private String password;
 }
