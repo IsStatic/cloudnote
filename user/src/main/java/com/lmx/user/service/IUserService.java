@@ -1,11 +1,10 @@
 package com.lmx.user.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.lmx.common.entitys.RespBean;
+import com.lmx.common.entitys.*;
 import com.lmx.user.entity.User;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * 
@@ -15,5 +14,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface IUserService extends IService<User> {
 
-    RespBean login(String phone, String password, HttpServletRequest request, HttpServletResponse response);
+    LoginResponse login(LoginEntity login);
+
+    UserInfoEntity check(UserInfoRequest userInfoRequest);
+
+    RespBean register(LoginEntity login);
+
+    RespBean update(UpdateEntity update);
+
+    RespBean updatePassWord(PassWordEntity passWord);
 }

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: DEMO
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+        register: true
+      connect-string: localhost:2181
+    openfeign:
+      httpclient:
+        enabled: on
+server:
+  port: 8000
+

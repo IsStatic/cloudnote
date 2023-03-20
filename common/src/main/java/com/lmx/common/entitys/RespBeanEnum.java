@@ -17,6 +17,7 @@ public enum RespBeanEnum {
 
     //登录模块
     LOGIN_ERROR(400210, "用户名或者密码不正确"),
+    LOGIN_NULL_ERROR(400201,"没有该用户"),
     MOBILE_ERROR(400211, "手机号码格式不正确"),
     BIND_ERROR(400212, "参数校验异常"),
     MOBILE_NOT_EXIST(400213, "手机号码不存在"),
@@ -29,8 +30,14 @@ public enum RespBeanEnum {
     HDFS_CREATE_NULL_ERROR(40001,"请求路径,文件名,内容不能为空"),
     HDFS_ERROR(500303,"未知异常"),
 
-    USER_CREATE_ERROR(40001,"用户已存在");
-
+    USER_CREATE_ERROR(40001,"用户已存在"),
+    USER_CREATE_NOTNULL_ERROR(40002,"手机号或密码为空"),
+    USER_PASSWORD_NOTNULL_ERROR(40003,"密码不能为空"),
+    USER_PHONE_NOTNULL_ERROR(40004,"密码不能为空"),
+    USER_UPDATE_ERROR(40005,"更新失败"),
+    USER_NOTLOGIN_ERROR(40006,"未登录"),
+    USER_PHONE_ERROR(40007,"该手机已存在"),
+    USER_PASSWORD_ERROR(40008,"密码错误");
 
     ;
 

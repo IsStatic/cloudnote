@@ -6,6 +6,8 @@ xmlns:th="http://thymeleaf.org">
     <title>你好</title>
 </head>
 <body>
-<p th:text="'hello'+${name}"></p>
+<p th:text="'hello'+${user.userName}"></p>
+<p th:text="'hello'+${user}"></p>
+<p th:text="'hello'+${user.id}"></p>
 </body>
 </html>

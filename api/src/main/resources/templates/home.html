@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <!-- common.js -->
+    <script src="/static/layui/layui.js"></script>
+    <!-- 引入样式 -->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    <link href="/static/layui/css/layui.css" rel="stylesheet">
+    <link href="/static/css/global.css" rel="stylesheet">
+</head>
+<body class="site-home" style="background-color: #eee">
+<div class="layui-header header header-index">
+    <div class="layui-container">
+        <a class="logo" href="/home">
+            <i class="layui-icon layui-icon-home" style="font-size: 30px"></i>
+        </a>
+        <ul class="layui-nav" >
+            <li class="layui-nav-item"><a href="/home">Home</a> </li>
+            <li class="layui-nav-item"><a href="/user/info">个人信息</a> </li>
+            <li class="layui-nav-item"><a href="/note/home">笔记</a> </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">关于</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="https://github.com/IsStatic/cloudnote">项目地址</a></dd>
+                    <dd><a href="/docs">操作手册</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 让 IE8/9 兼容响应式栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<div class= "site-banner">
+    <div class="site-banner-bg">
+    </div>
+    <div class="site-banner-main">
+        <div class="site-zfj">
+            <i class="layui-icon" style="color: #fff; color: rgba(255,255,255,.6);">&#8704;</i>
+        </div>
+        <div class="layui-anim site-desc">
+            <p class="web-font-desc">基于Hadoop的云笔记</p>
+            <cite>基于Hadoop生态里的HDFS实现无限存储</cite>
+        </div>
+        <div class="site-download">
+            <a href="" class="layui-btn layui-btn-lg">
+                创建笔记
+            </a>
+            <a href="/docs" class="layui-btn layui-btn-lg layui-btn-primary layui-border-green" target="_blank">
+                操作手册
+            </a>
+        </div>
+        <div class="site-version">
+            <span>当前版本：v<cite class="site-showv">0.0.1</cite></span>
+        </div>
+    </div>
+</div>
+<div class="layui-footer footer footer-index">
+    <p>
+        2023 <a href="/">cloudNote</a> LMX</p>
+</div>
+
+<script>
+    layui.use('element',function (){
+        var element = layui.element;
+    });
+</script>
+
+
+
+</body>
+</html>

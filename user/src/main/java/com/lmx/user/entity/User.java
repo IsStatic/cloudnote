@@ -3,6 +3,7 @@ package com.lmx.user.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,6 +18,7 @@ import java.util.Date;
  */
 @Getter
 @Setter
+@Data
 @TableName("user")
 public class User implements Serializable {
 
@@ -37,5 +39,6 @@ public class User implements Serializable {
 
     private Long phone;
 
+    private String slat;
 
 }
