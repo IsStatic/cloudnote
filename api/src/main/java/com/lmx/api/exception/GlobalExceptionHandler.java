@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
     @ExceptionHandler
     public RespBean ExceptionHandler(Exception e){
+        System.out.println(e);
         if (e instanceof GlobalException){
             GlobalException ex = (GlobalException) e;
             return RespBean.error(ex.getRespBeanEnum());

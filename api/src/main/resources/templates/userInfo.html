@@ -57,7 +57,7 @@
                         </li>
                         <li>
                             <div class="layui-menu-body-title" style="height: 40px;font-size: 20px">
-                                <a>
+                                <a href="/user/toNote">
                                     <span>我的笔记</span>
                                     <i class="layui-icon layui-icon-file"></i>
                                 </a>
@@ -93,6 +93,10 @@
                 <div class="layui-input-block">
                     <input type="text" id="Phone" name="Phone" th:value="${user.Phone}" lay-verify="phone" class="layui-input">
                 </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">注册时间</label>
+                <label class="layui-form-label" th:value="${user.createdAt}"></label>
             </div>
             <div class="layui-form-item">
                 <div class="layui-input-block">

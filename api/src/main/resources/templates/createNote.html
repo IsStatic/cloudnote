@@ -3,7 +3,7 @@
       xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>myNote</title>
+    <title>创建笔记</title>
     <!-- common.js -->
     <!-- 引入样式 -->
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
@@ -51,7 +51,7 @@
                             <div class="layui-menu-body-title" style="height: 40px; font-size: 20px">
                                 <a href="/note/create">
                                     <span>创建笔记</span>
-                                    <span class="layui-font-12 layui-font-gray">创建你的笔记</span>
+                                    <i class="layui-icon layui-icon-survey"></i>
                                 </a>
                             </div>
                         </li>
@@ -79,14 +79,36 @@
     </div>
     <div class="layui-col-md10 site-content">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>笔记</legend>
+            <legend>创建笔记</legend>
         </fieldset>
-        <div class="layui-anim site-desc">
-            <p class="web-font-desc" style="color: #393D49" >开始创建你的笔记吧！</p>
-        </div>
+        <form class="layui-form" id="form">
+            <div class="layui-form-item">
+                <div class="layui-form-label">日期</div>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="time" lay-verify="required" placeholder="选择日期">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-form-label">标题</div>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="title" lay-verify="required" placeholder="请输入标题">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-form-label">笔记内容</div>
+                <div class="layui-input-block">
+                    <textarea id="context" name="context" required lay-verify="required" style="height: 300px" placeholder="请输入" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter = "create">保存</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
-
 
 
 
@@ -94,28 +116,35 @@
     <p>
         2023 <a href="/">cloudNote</a> LMX</p>
 </div>
+
+<input type="hidden" id="userID" th:value="${user.id}">
 <script src="/static/layui/layui.js"></script>
 <!-- layer -->
 <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
 <!-- jquery -->
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script>
-    layui.use(['element','form'],function (){
-        var form = layui.form, element = layui.element;
-        form.on('submit(update)',function (data) {
+    layui.use(['element','form','laydate'],function (){
+        var form = layui.form, element = layui.element , laydate =layui.laydate ;
+        laydate.render({
+           elem: '#time'
+        });
+        form.on('submit(create)',function (data) {
             g_showLoading();
             $.ajax({
-                url: "/user/update",
+                url: "/note/create",
                 type: "POST",
                 data: {
-                    phone: $("#Phone").val(),
-                    userName: $("#userName").val()
+                    userID: $("#userID").val(),
+                    createdAt: $("#time").val(),
+                    title: $("#title").val(),
+                    context: $("#context").val()
                 },
                 success: function (data) {
                     layer.closeAll();
                     if (data.code == 200){
                         layer.msg("成功");
-                        window.location.href = "/user/info";
+                        window.location.href = "/note/toNote";
                     }else {
                         layer.msg("失败:"+data.message);
                     }

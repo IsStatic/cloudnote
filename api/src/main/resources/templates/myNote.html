@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>myNote</title>
+    <!-- common.js -->
+    <!-- 引入样式 -->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    <link href="/static/layui/css/layui.css" rel="stylesheet">
+    <link href="/static/css/global.css" rel="stylesheet">
+</head>
+<body class="site-home" style="background-color: #eee">
+<div class="layui-header header header-index">
+    <div class="layui-container">
+        <a class="logo" href="/home">
+            <i class="layui-icon layui-icon-home" style="font-size: 30px"></i>
+        </a>
+        <ul class="layui-nav" >
+            <li class="layui-nav-item"><a href="/home">Home</a> </li>
+            <li class="layui-nav-item"><a href="/user/info">个人信息</a> </li>
+            <li class="layui-nav-item"><a href="/note/home">笔记</a> </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;">关于</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="https://github.com/IsStatic/cloudnote">项目地址</a></dd>
+                    <dd><a href="/docs">操作手册</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 让 IE8/9 兼容响应式栅格 -->
+<!--[if lt IE 9]>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+<div class="layui-container layui-row">
+    <div class="layui-col-md2">
+        <div class="layui-panel site-menu">
+            <ul class="layui-main layui-menu-lg site-docs-menu">
+                <li class="layui-menu-item-group">
+                    <a class="site-menu">
+                        <i class="layui-icon layui-icon-username" style="font-size: 40px"></i>
+                    </a>
+                </li>
+                <li class="layui-menu-item-group">
+                    <hr>
+                    <ul>
+                        <li>
+                            <div class="layui-menu-body-title" style="height: 40px; font-size: 20px">
+                                <a href="/user/info">
+                                    <span>用户信息</span>
+                                    <span class="layui-font-12 layui-font-gray">查看/修改</span>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="layui-menu-body-title" style="height: 40px;font-size: 20px">
+                                <a href="/user/toNote">
+                                    <span>我的笔记</span>
+                                    <i class="layui-icon layui-icon-file"></i>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="layui-menu-body-title" style="height: 40px;font-size: 20px">
+                                <a href="/user/toPassWordHome">
+                                    <span>修改密码</span>
+                                    <i class="layui-icon layui-icon-password"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="layui-hide-v"> - </div>
+    </div>
+    <div class="layui-col-md10 site-content">
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>word笔记</legend>
+        </fieldset>
+        <table id="noteList" lay-filter = "test"></table>
+<!--        <script type="text/html" id="toolbarDemo">-->
+<!--            <div class="layui-btn-container">-->
+<!--                <button class="layui-btn layui-btn-sm" lay-event="add">添加</button>-->
+<!--                <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>-->
+<!--                <button class="layui-btn layui-btn-sm" lay-event="update">编辑</button>-->
+<!--            </div>-->
+<!--        </script>-->
+    </div>
+</div>
+<script type="text/html" id="toolEvent">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+
+    <!-- 支持任意的 laytpl 语法，如： -->
+<!--    {{#  if(d.auth > 2){ }}-->
+<!--    <a class="layui-btn layui-btn-xs" lay-event="check">审核</a>-->
+<!--    {{#  } }}-->
+</script>
+
+
+
+<div class="layui-footer footer footer-index">
+    <p>
+        2023 <a href="/">cloudNote</a> LMX</p>
+</div>
+<script src="/static/layui/layui.js"></script>
+<!-- layer -->
+<script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+<!-- jquery -->
+<script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+<script>
+    layui.use(['element','table'],function (){
+        var table = layui.table, element = layui.element;
+        table.render({
+            elem: '#noteList',
+            height: 500,
+            url: "/note/getNoteList",
+            page: true,
+            parseData: function (res) {
+                return{
+                    "code": res.code,
+                    "msg": res.message,
+                    "count": res.cnt,
+                    "data": res.data
+                };
+            },
+            cols: [[
+                {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'},
+                {field: 'createdAt', title: '创建时间',width: 180,templet: "<div>{{layui.util.toDateString(d.createdAt, 'yyyy-MM-dd')}}</div>" , sort: true},
+                {field: 'updatedAt', title: '修改时间',width: 180,templet: "<div>{{layui.util.toDateString(d.updatedAt, 'yyyy-MM-dd')}}</div>", sort: true},
+                {field: 'title', title: '标题',width: 200},
+                {title: '操作',width: 290, templet: '#toolEvent'}
+            ]
+            ],
+            initSort:{
+                field: 'id',
+                type: 'desc'
+            }
+        });
+        table.on('tool(test)',function (obj) {
+            var data = obj.data; //获得当前行数据
+            var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+            var tr = obj.tr; //获得当前行 tr 的 DOM 对象（如果有的话）
+            if (layEvent === 'detail'){
+                window.location.href = "/note/toNoteInfo?noteID="+data.id;
+            }else if (layEvent === 'edit'){
+                window.location.href = "/note/toUpdate?noteID="+data.id;
+            }else if (layEvent === 'del'){
+                layer.confirm('确定删除吗？',{bth: ['确定','取消']},function (index){
+                    layer.load();
+                    $.ajax({
+                        url: "/note/delete",
+                        type: "POST",
+                        data: {
+                            noteID: data.id
+                        },
+                        success: function (data){
+                            layer.closeAll();
+                            if (data.code == 200){
+                                layer.msg("成功");
+                                table.reloadData('noteList', {
+                                    elem: '#noteList',
+                                    height: 500,
+                                    url: "/note/getNoteList",
+                                    page: true,
+                                    parseData: function (res) {
+                                        return{
+                                            "code": res.code,
+                                            "msg": res.message,
+                                            "count": res.cnt,
+                                            "data": res.data
+                                        };
+                                    },
+                                    cols: [[
+                                        {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'},
+                                        {field: 'createdAt', title: '创建时间',width: 180,templet: "<div>{{layui.util.toDateString(d.createdAt, 'yyyy-MM-dd')}}</div>" , sort: true},
+                                        {field: 'updatedAt', title: '修改时间',width: 180,templet: "<div>{{layui.util.toDateString(d.updatedAt, 'yyyy-MM-dd')}}</div>", sort: true},
+                                        {field: 'title', title: '标题',width: 200},
+                                        {title: '操作',width: 290, templet: '#toolEvent'}
+                                    ]
+                                    ],
+                                    initSort:{
+                                        field: 'id',
+                                        type: 'desc'
+                                    },
+                                    scrollPos: 'fixed'
+                                });
+                            }else {
+                                layer.msg("失败:"+data.message);
+                            }
+                        },
+                        error: function (){
+                            layer.closeAll();
+                        }
+                    });
+                    layer.msg("成功");
+                },function (){
+
+                });
+            }
+        });
+    });
+</script>
+</body>
+</html>

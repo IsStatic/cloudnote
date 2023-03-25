@@ -66,6 +66,14 @@ public class UserController {
 
     @RequestMapping("/toPassWordHome")
     public String toPassWordHome(UserInfoEntity userInfoEntity){
+        if (userInfoEntity == null) return "login";
         return "updatePassword";
+    }
+
+    @RequestMapping("/toNote")
+    public String toNote(UserInfoEntity userInfoEntity,Model model){
+        if (userInfoEntity == null) return "login";
+        model.addAttribute("user",userInfoEntity);
+        return "myNote";
     }
 }

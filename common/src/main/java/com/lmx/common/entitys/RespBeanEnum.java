@@ -15,6 +15,8 @@ public enum RespBeanEnum {
     SUCCESS(200, "SUCCESS"),
     ERROR(500, "服务端异常"),
 
+    MAPPER_ERROR(501,"使用mybatis异常"),
+
     //登录模块
     LOGIN_ERROR(400210, "用户名或者密码不正确"),
     LOGIN_NULL_ERROR(400201,"没有该用户"),
@@ -28,7 +30,8 @@ public enum RespBeanEnum {
     HDFS_CREATE_ERROR(500301,"创建文件失败,文件已存在"),
     HDFS_PATH_ERROR(500302,"目标路径为空"),
     HDFS_CREATE_NULL_ERROR(40001,"请求路径,文件名,内容不能为空"),
-    HDFS_ERROR(500303,"未知异常"),
+    HDFS_ERROR(500303,"未知异常-HDFS"),
+    HDFS_FILENOTNULL_ERROR(40040,"文件不能为空"),
 
     USER_CREATE_ERROR(40001,"用户已存在"),
     USER_CREATE_NOTNULL_ERROR(40002,"手机号或密码为空"),
@@ -37,7 +40,15 @@ public enum RespBeanEnum {
     USER_UPDATE_ERROR(40005,"更新失败"),
     USER_NOTLOGIN_ERROR(40006,"未登录"),
     USER_PHONE_ERROR(40007,"该手机已存在"),
-    USER_PASSWORD_ERROR(40008,"密码错误");
+    USER_PASSWORD_ERROR(40008,"密码错误"),
+
+    NOTE_ISEXIST_ERROR(40020,"该笔记已存在，无法再次创建"),
+    NOTE_FILETRME_ERROR(40021,"无法获取文件流"),
+    NOTE_UPDATE_ERROR(40022,"参数不能为空"),
+    NOTE_NOT_ERROR(40023,"笔记不存在"),
+    ;
+
+
 
     ;
 

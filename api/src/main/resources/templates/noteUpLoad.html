@@ -3,7 +3,7 @@
       xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>myNote</title>
+    <title>上传笔记</title>
     <!-- common.js -->
     <!-- 引入样式 -->
     <script type="text/javascript" th:src="@{/js/common.js}"></script>
@@ -51,7 +51,7 @@
                             <div class="layui-menu-body-title" style="height: 40px; font-size: 20px">
                                 <a href="/note/create">
                                     <span>创建笔记</span>
-                                    <span class="layui-font-12 layui-font-gray">创建你的笔记</span>
+                                    <i class="layui-icon layui-icon-survey"></i>
                                 </a>
                             </div>
                         </li>
@@ -79,11 +79,11 @@
     </div>
     <div class="layui-col-md10 site-content">
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>笔记</legend>
+            <legend>上传笔记</legend>
         </fieldset>
-        <div class="layui-anim site-desc">
-            <p class="web-font-desc" style="color: #393D49" >开始创建你的笔记吧！</p>
-        </div>
+        <button type="button" class="layui-btn" id="upLoad">
+            <i class="layui-icon"></i>上传
+        </button>
     </div>
 </div>
 
@@ -100,31 +100,30 @@
 <!-- jquery -->
 <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
 <script>
-    layui.use(['element','form'],function (){
-        var form = layui.form, element = layui.element;
-        form.on('submit(update)',function (data) {
-            g_showLoading();
-            $.ajax({
-                url: "/user/update",
-                type: "POST",
-                data: {
-                    phone: $("#Phone").val(),
-                    userName: $("#userName").val()
-                },
-                success: function (data) {
-                    layer.closeAll();
-                    if (data.code == 200){
-                        layer.msg("成功");
-                        window.location.href = "/user/info";
-                    }else {
-                        layer.msg("失败:"+data.message);
-                    }
-                },
-                error: function () {
-                    layer.closeAll();
+    layui.use(['element','upload'],function (){
+        var upload = layui.upload, element = layui.element;
+        upload.render({
+           elem: '#upLoad',
+            url: '/note/upLoad',
+            data: {
+                userID: $("#userID").val(),
+            },
+            before: function () {
+              layer.load();
+            },
+            done: function (res) {
+                layer.closeAll();
+                if(res.code == 200){
+                   layer.msg("成功");
+                    window.location.href = "/note/toNote";
+               }else{
+                    layer.msg("失败:"+res.message);
                 }
-            });
-            return false;
+            },
+            error: function (){
+               layer.closeAll();
+            },
+            accept: 'file'
         });
     });
 </script>

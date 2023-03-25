@@ -1304,3 +1304,31 @@ DEBUG SpringApplicationShutdownHook org.springframework.context.support.DefaultL
 DEBUG SpringApplicationShutdownHook org.springframework.context.support.DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
 DEBUG SpringApplicationShutdownHook org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
 DEBUG SpringApplicationShutdownHook org.springframework.jmx.export.annotation.AnnotationMBeanExporter - Unregistering JMX-exposed beans
+DEBUG http-nio-8002-exec-1 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-1 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-1 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-1 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-6 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-6 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-4 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-4 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-6 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-6 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-3 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-2 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
+DEBUG http-nio-8002-exec-5 org.apache.htrace.core.Tracer - sampler.classes = ; loaded no samplers
+DEBUG http-nio-8002-exec-5 org.apache.htrace.core.Tracer - span.receiver.classes = ; loaded no span receivers
